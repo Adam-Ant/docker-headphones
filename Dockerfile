@@ -1,4 +1,4 @@
-FROM alpine:3.3
+FROM alpine:3.4
 MAINTAINER Adam Dodman <adam.dodman@gmx.com>
 
 ADD start.sh /start.sh
