@@ -1,14 +1,16 @@
 FROM alpine:3.4
 MAINTAINER Adam Dodman <adam.dodman@gmx.com>
 
+ENV UID=526 UNAME=headphones GID=990 GNAME=media
+
 ADD start.sh /start.sh
 
-RUN apk --update add git python && \
-    adduser -S -u 526 -H -D -s /usr/sbin/nologin headphones && \
-    rm -rf /tmp && \
-    rm -rf /var/cache/apk/* && \
-    mkdir /headphones && chown 526:526 /headphones && \
-    chmod u+x  /start.sh
+RUN chmod +x /start.sh \
+ && addgroup -g $GID $GNAME \
+ && adduser -SH -u $UID -G $GNAME -s /usr/sbin/nologin $UNAME \
+ && apk --update add git python && \
+ && mkdir /headphones && chown $UID:$GID /headphones
+
 
 USER headphones
 RUN git clone --depth=1 https://github.com/rembo10/headphones.git /headphones
