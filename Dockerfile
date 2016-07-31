@@ -8,7 +8,7 @@ ADD start.sh /start.sh
 RUN chmod +x /start.sh \
  && addgroup -g $GID $GNAME \
  && adduser -SH -u $UID -G $GNAME -s /usr/sbin/nologin $UNAME \
- && apk --update add git python && \
+ && apk --update add git python \
  && mkdir /headphones && chown $UID:$GID /headphones
 
 
