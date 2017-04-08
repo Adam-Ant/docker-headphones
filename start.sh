@@ -5,5 +5,4 @@
 http_host = 0.0.0.0
 EOF
 
-git -C /headphones pull --depth=1
 python2.7 /headphones/Headphones.py --datadir=/config/headphones --config=/config/headphones/headphones.ini
